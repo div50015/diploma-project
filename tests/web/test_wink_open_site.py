@@ -6,18 +6,22 @@ from selene import command
 
 def test_open_site():
     browser.open('/')
-    l=[]
-    l = browser.all('nav').first.all('div a span')
+    browser.all('nav').first.all('div a span').should(have.size(13))
+    (browser.all('nav').first.all('div a span').
+     should(have.
+    exact_texts('Главная', 'ТВ-каналы', 'Моё кино', 'Фильмы', 'Сериалы', 'Детям', 'Спорт', 'Блог')))
     # for v in vv:
     #     p = v.locate().text
     #     print(f'span = {p}')
-    print(l)
-
     # vv = browser.all('nav').first.all('div a span')[0].locate().text
     # print(f'\r\n count elements = {vv}')
     # browser.all('#i4ukg0g').element(have.text('movies')).should(have.text('Фильмы'))
-#    time.sleep(5)
+    # time.sleep(5)
 
-#    i1b7aq89 Фильмы  i4ukg0g #header > div > div > div.moyk7m > div > nav > div:nth-child(1) > a > span
+def test_page_movies():
+    browser.open('/')
+    browser.all('nav').first.all('div a span').element(have.text('ТВ-каналы')).click()
+    browser.all('main span').should(have.text('ТВ-каналы'))
 
-#header > div > div > div.moyk7m > div > nav > div:nth-child(1) > a > span
+#header > div > div > div.moyk7m > div > nav > div:nth-child(2) > a > span
+#root > div.rwh68sa > div.r15qqrn5 > main > div > div > div.r1iu6vdu.zujqyi9 > div > a.lltcpd8.ld9ti8i > span
