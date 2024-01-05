@@ -53,9 +53,11 @@ def test_page_movies_selection_by_year_sorting_by_reyting():
     browser.element('span > button:nth-child(2) > span > svg').click()
     browser.element('label:nth-child(2) > span').click()
     time.sleep(5)
-    vv = browser.all('div.r1se895.ccukme8.rz6f1rl > span')
-    for v in vv:
-        p = v.locate().text
-        print(f'span = {p}')
+    lst = []
+    reitings = browser.all('div.r1se895.ccukme8.rz6f1rl > span')
+    for reiting in reitings:
+        lst.append(reiting.locate().text)
+        print(f'span = {lst}')
 
+    assert all(lst[i] >= lst[i+1] for i in range(len(lst)-1))
 #  ul > li:nth-child(5) > div > label > span > svg > rect:nth-child(2)
