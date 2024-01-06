@@ -1,0 +1,328 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Welcome1",
+    "definitions": {
+        "Welcome1": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "total_items": {
+                    "type": "integer"
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Item"
+                    }
+                }
+            },
+            "required": [
+                "items",
+                "total_items"
+            ],
+            "title": "Welcome1"
+        },
+        "Item": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "age_level": {
+                    "$ref": "#/definitions/AgeLevel"
+                },
+                "is_barker": {
+                    "type": "boolean"
+                },
+                "logo": {
+                    "type": "string"
+                },
+                "background": {
+                    "type": "string"
+                },
+                "full_logo": {
+                    "type": "string"
+                },
+                "number": {
+                    "type": "integer"
+                },
+                "themes": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "is_erotic": {
+                    "type": "boolean"
+                },
+                "is_favorite": {
+                    "type": "boolean"
+                },
+                "usage_model": {
+                    "$ref": "#/definitions/UsageModel"
+                },
+                "poster_bg_color": {
+                    "type": "string"
+                },
+                "epgs": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Epg"
+                    }
+                },
+                "is_npvr": {
+                    "type": "boolean"
+                },
+                "nc_channel_id": {
+                    "type": "integer"
+                },
+                "is_child": {
+                    "type": "boolean"
+                },
+                "is_pin_required": {
+                    "type": "boolean"
+                },
+                "is_secret": {
+                    "type": "boolean"
+                },
+                "is_hidden": {
+                    "type": "boolean"
+                },
+                "is_getshoptv": {
+                    "type": "boolean"
+                },
+                "is_channel_preview_enabled": {
+                    "type": "boolean"
+                },
+                "quality": {
+                    "$ref": "#/definitions/Quality"
+                },
+                "is_advertising": {
+                    "type": "boolean"
+                },
+                "slug": {
+                    "type": "string"
+                },
+                "is_qr_ads_enabled": {
+                    "type": "boolean"
+                },
+                "is_auth_required": {
+                    "type": "boolean"
+                },
+                "advertising_place_type": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/AdvertisingPlaceType"
+                    }
+                },
+                "teletext": {
+                    "type": "string",
+                    "format": "integer"
+                }
+            },
+            "required": [
+                "age_level",
+                "background",
+                "description",
+                "epgs",
+                "full_logo",
+                "id",
+                "is_advertising",
+                "is_barker",
+                "is_channel_preview_enabled",
+                "is_child",
+                "is_erotic",
+                "is_favorite",
+                "is_hidden",
+                "is_npvr",
+                "is_pin_required",
+                "is_qr_ads_enabled",
+                "is_secret",
+                "logo",
+                "name",
+                "nc_channel_id",
+                "number",
+                "poster_bg_color",
+                "slug",
+                "themes"
+            ],
+            "title": "Item"
+        },
+        "AgeLevel": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "$ref": "#/definitions/Name"
+                },
+                "age_value": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "age_value",
+                "id",
+                "name"
+            ],
+            "title": "AgeLevel"
+        },
+        "Epg": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "original_id": {
+                    "type": "integer"
+                },
+                "channel_id": {
+                    "type": "integer"
+                },
+                "content_id": {
+                    "type": "integer"
+                },
+                "age_level": {
+                    "$ref": "#/definitions/AgeLevel"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "start_time": {
+                    "type": "integer"
+                },
+                "end_time": {
+                    "type": "integer"
+                },
+                "genre": {
+                    "type": "integer"
+                },
+                "is_pause_allowed": {
+                    "type": "boolean"
+                },
+                "description": {
+                    "type": "string"
+                },
+                "logo": {
+                    "type": "string"
+                },
+                "is_tstv_allowed": {
+                    "type": "boolean"
+                },
+                "is_favorite": {
+                    "type": "boolean"
+                },
+                "channel_info": {
+                    "$ref": "#/definitions/ChannelInfo"
+                },
+                "has_reminder": {
+                    "type": "boolean"
+                },
+                "general_id": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "age_level",
+                "channel_id",
+                "channel_info",
+                "content_id",
+                "description",
+                "end_time",
+                "genre",
+                "has_reminder",
+                "id",
+                "is_favorite",
+                "is_pause_allowed",
+                "is_tstv_allowed",
+                "logo",
+                "name",
+                "original_id",
+                "start_time"
+            ],
+            "title": "Epg"
+        },
+        "ChannelInfo": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "logo": {
+                    "type": "string"
+                },
+                "poster_bg_color": {
+                    "type": "string"
+                },
+                "number": {
+                    "type": "integer"
+                },
+                "nc_channel_id": {
+                    "type": "integer"
+                },
+                "slug": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "id",
+                "logo",
+                "name",
+                "nc_channel_id",
+                "number",
+                "poster_bg_color",
+                "slug"
+            ],
+            "title": "ChannelInfo"
+        },
+        "AdvertisingPlaceType": {
+            "type": "string",
+            "enum": [
+                "switchroll",
+                "startroll"
+            ],
+            "title": "AdvertisingPlaceType"
+        },
+        "Name": {
+            "type": "string",
+            "enum": [
+                "0+",
+                "12+",
+                "18+",
+                "16+",
+                "6+"
+            ],
+            "title": "Name"
+        },
+        "Quality": {
+            "type": "string",
+            "enum": [
+                "HD",
+                "SD",
+                "4K"
+            ],
+            "title": "Quality"
+        },
+        "UsageModel": {
+            "type": "string",
+            "enum": [
+                "FREE"
+            ],
+            "title": "UsageModel"
+        }
+    }
+}

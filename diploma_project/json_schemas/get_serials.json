@@ -1,0 +1,119 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Welcome4",
+    "definitions": {
+        "Welcome4": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "alias": {
+                    "type": "string"
+                },
+                "background_url": {
+                    "type": "string"
+                },
+                "media_blocks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/MediaBlock"
+                    }
+                },
+                "has_next": {
+                    "type": "boolean"
+                },
+                "meta_property": {
+                    "$ref": "#/definitions/MetaProperty"
+                }
+            },
+            "required": [
+                "alias",
+                "background_url",
+                "has_next",
+                "id",
+                "media_blocks",
+                "meta_property",
+                "name"
+            ],
+            "title": "Welcome4"
+        },
+        "MediaBlock": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "items": {
+                    "type": "array",
+                    "items": {}
+                },
+                "display_type": {
+                    "type": "string"
+                },
+                "is_clickable": {
+                    "type": "boolean"
+                },
+                "custom_data": {
+                    "$ref": "#/definitions/CustomData"
+                }
+            },
+            "required": [
+                "custom_data",
+                "display_type",
+                "id",
+                "is_clickable",
+                "items",
+                "name",
+                "type"
+            ],
+            "title": "MediaBlock"
+        },
+        "CustomData": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "display_type": {
+                    "type": "string"
+                },
+                "title": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "display_type",
+                "title"
+            ],
+            "title": "CustomData"
+        },
+        "MetaProperty": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "description",
+                "title"
+            ],
+            "title": "MetaProperty"
+        }
+    }
+}

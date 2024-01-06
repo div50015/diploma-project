@@ -1,0 +1,265 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Welcome7",
+    "definitions": {
+        "Welcome7": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "alias": {
+                    "type": "string"
+                },
+                "background_url": {
+                    "type": "string"
+                },
+                "media_blocks": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/MediaBlock"
+                    }
+                },
+                "has_next": {
+                    "type": "boolean"
+                },
+                "meta_property": {
+                    "$ref": "#/definitions/MetaProperty"
+                }
+            },
+            "required": [
+                "alias",
+                "background_url",
+                "has_next",
+                "id",
+                "media_blocks",
+                "meta_property",
+                "name"
+            ],
+            "title": "Welcome7"
+        },
+        "MediaBlock": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "string",
+                    "format": "uuid"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "type": {
+                    "type": "string"
+                },
+                "items": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Item"
+                    }
+                },
+                "display_type": {
+                    "type": "string"
+                },
+                "is_clickable": {
+                    "type": "boolean"
+                }
+            },
+            "required": [
+                "display_type",
+                "id",
+                "is_clickable",
+                "items",
+                "name",
+                "type"
+            ],
+            "title": "MediaBlock"
+        },
+        "Item": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "$ref": "#/definitions/ItemType"
+                },
+                "banner": {
+                    "$ref": "#/definitions/Banner"
+                }
+            },
+            "required": [
+                "banner",
+                "type"
+            ],
+            "title": "Item"
+        },
+        "Banner": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "size": {
+                    "$ref": "#/definitions/Size"
+                },
+                "subtitle": {
+                    "type": "string"
+                },
+                "icon": {
+                    "type": "string"
+                },
+                "images": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "target": {
+                    "$ref": "#/definitions/Target"
+                },
+                "color": {
+                    "$ref": "#/definitions/Color"
+                },
+                "is_erotic": {
+                    "type": "boolean"
+                },
+                "labels": {
+                    "type": "array",
+                    "items": {}
+                },
+                "ratings": {
+                    "$ref": "#/definitions/Ratings"
+                },
+                "providers": {
+                    "type": "null"
+                }
+            },
+            "required": [
+                "color",
+                "icon",
+                "id",
+                "images",
+                "is_erotic",
+                "labels",
+                "providers",
+                "ratings",
+                "size",
+                "subtitle",
+                "target",
+                "title"
+            ],
+            "title": "Banner"
+        },
+        "Ratings": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "kinopoisk": {
+                    "type": "integer"
+                },
+                "imdb": {
+                    "type": "integer"
+                },
+                "rostelecom": {
+                    "type": "integer"
+                },
+                "wink": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "imdb",
+                "kinopoisk",
+                "rostelecom",
+                "wink"
+            ],
+            "title": "Ratings"
+        },
+        "Target": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "$ref": "#/definitions/TargetType"
+                },
+                "link": {
+                    "$ref": "#/definitions/Link"
+                }
+            },
+            "required": [
+                "link",
+                "type"
+            ],
+            "title": "Target"
+        },
+        "Link": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "genre_id": {
+                    "type": "integer"
+                },
+                "category_id": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "category_id",
+                "genre_id"
+            ],
+            "title": "Link"
+        },
+        "MetaProperty": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "description",
+                "title"
+            ],
+            "title": "MetaProperty"
+        },
+        "Color": {
+            "type": "string",
+            "enum": [
+                "ffffff00"
+            ],
+            "title": "Color"
+        },
+        "Size": {
+            "type": "string",
+            "enum": [
+                "small"
+            ],
+            "title": "Size"
+        },
+        "TargetType": {
+            "type": "string",
+            "enum": [
+                "media_items"
+            ],
+            "title": "TargetType"
+        },
+        "ItemType": {
+            "type": "string",
+            "enum": [
+                "banner"
+            ],
+            "title": "ItemType"
+        }
+    }
+}
