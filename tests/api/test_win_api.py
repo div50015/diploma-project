@@ -6,36 +6,79 @@ import os
 import requests
 import json
 import logging
+from diploma_project.utils.utils import load_schema
+import jsonschema
 
-def test_wink_movies():
-    headers = {
-        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-        'Postman-Token': '8b0e3ec0-c5c5-41f1-8b1c-2b152ab2b581',}
+
+def test_wink_my_movies():
+    headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.361',}
     url = "https://cnt-lbrc-itv01.svc.iptv.rt.ru/api/v2/user/session_tokens"
-    payload = {"device": {"type": "NCWEB", "platform": "browser"}, "fingerprint": "Yc6iBwS6-aCvRbFGInW5p"}
-
+    payload = {"device": {"type": "NCWEB", "platform": "browser"}, "fingerprint": "rDZGI44TquVozSNB2rgXy"}
     result = requests.post( url, headers=headers, json=payload)
+    session_id = result.json()['session_id']
 
-    s_c1 = result.status_code
-    s_id = result.json()['session_id']
-    print(f'\r\n  status_code = {s_c1}\r\n  session_id = {s_id}')
+    schema = load_schema("get_moekino.json")
 
-    # sid  = '735d8fa0-aa58-11ee-be92-f063f976f300:1951421:99863903:8'
-
-    url = "https://cnt-odcv-itv01.svc.iptv.rt.ru/api/v3/user/media_views/alias/moekino?limit=4&offset=0"
-    headers = {
-    'session_id': '735d8fa0-aa58-11ee-be92-f063f976f300:1951421:99863903:8',
-    'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-    }
-
+    url ='https://cnt-lbrc-itv01.svc.iptv.rt.ru/api/v3/user/media_views/alias/moekino?limit=1&offset=1'
+    headers = {'session_id': session_id,'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',}
     result = requests.get(url, headers=headers)
 
-    s_c2 = result.status_code
-    s_name = result.json()['name']
-    print(f'\r\n  status_code2 = {s_c2}\r\n  name = {s_name}')
+    assert result.status_code == 200
+    jsonschema.validate(result.json(), schema)
+    assert result.json()['name'] == 'Моё кино'
 
 
+def test_wink_movies():
+    headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.361',}
+    url = "https://cnt-lbrc-itv01.svc.iptv.rt.ru/api/v2/user/session_tokens"
+    payload = {"device": {"type": "NCWEB", "platform": "browser"}, "fingerprint": "rDZGI44TquVozSNB2rgXy"}
+    result = requests.post( url, headers=headers, json=payload)
+    session_id = result.json()['session_id']
 
+    schema = load_schema("get_kino.json")
+
+    url ='https://cnt-lbrc-itv01.svc.iptv.rt.ru/api/v3/user/media_views/alias/movies?limit=1&offset=1'
+    headers = {'session_id': session_id,'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',}
+    result = requests.get(url, headers=headers)
+
+    assert result.status_code == 200
+    jsonschema.validate(result.json(), schema)
+    assert result.json()['name'] == 'Фильмы'
+
+def test_wink_serials():
+    headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.361',}
+    url = "https://cnt-lbrc-itv01.svc.iptv.rt.ru/api/v2/user/session_tokens"
+    payload = {"device": {"type": "NCWEB", "platform": "browser"}, "fingerprint": "rDZGI44TquVozSNB2rgXy"}
+    result = requests.post( url, headers=headers, json=payload)
+    session_id = result.json()['session_id']
+
+    schema = load_schema("get_serials.json")
+
+    url ='https://cnt-lbrc-itv01.svc.iptv.rt.ru/api/v3/user/media_views/alias/series?limit=1&offset=1'
+    headers = {'session_id': session_id,'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',}
+    result = requests.get(url, headers=headers)
+
+    assert result.status_code == 200
+    jsonschema.validate(result.json(), schema)
+    assert result.json()['name'] == 'Сериалы'
+
+
+def test_wink_tv_channels():
+    headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.361',}
+    url = "https://cnt-lbrc-itv01.svc.iptv.rt.ru/api/v2/user/session_tokens"
+    payload = {"device": {"type": "NCWEB", "platform": "browser"}, "fingerprint": "rDZGI44TquVozSNB2rgXy"}
+    result = requests.post( url, headers=headers, json=payload)
+    session_id = result.json()['session_id']
+
+    schema = load_schema("get_tv_channels.json")
+
+    url ='https://cnt-lbrc-itv01.svc.iptv.rt.ru/api/v2/user/channels?with_epg=true&epg_limit=1&limit=1&offset=1'
+    headers = {'session_id': session_id,'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',}
+    result = requests.get(url, headers=headers)
+
+    assert result.status_code == 200
+    jsonschema.validate(result.json(), schema)
+    assert result.json()['items'][0]['name'] == 'Всё ТВ'
 
 
 
