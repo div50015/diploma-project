@@ -203,5 +203,6 @@ def test_wiki_movies(context):
 
 
 
-
+# curl -u "igor_CuZE0R:oDYnn9pctxee3f5pAvwN" -X POST "https://api-cloud.browserstack.com/app-automate/upload"  -F "file=@C:\QA\Wink137100.apk"
+# {"app_url":"bs://3373ebba06cc0797964d5c64bcf72aab147092cf"}
 

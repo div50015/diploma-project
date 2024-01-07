@@ -81,9 +81,6 @@ def test_wink_tv_channels():
     assert result.json()['items'][0]['name'] == 'Всё ТВ'
 
 
-# curl -u "igor_CuZE0R:oDYnn9pctxee3f5pAvwN" -X POST "https://api-cloud.browserstack.com/app-automate/upload"  -F "file=@C:\QA\Wink137100.apk"
-# {"app_url":"bs://3373ebba06cc0797964d5c64bcf72aab147092cf"}
-
 # logging.info(result.request.url)
 # logging.info(result.request.headers)
 # logging.info(result.request.body)
