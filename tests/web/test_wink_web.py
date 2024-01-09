@@ -2,14 +2,7 @@ import time
 from selene import browser, have, by
 import os
 from selene import command
-
-
-def test_open_site():
-    browser.open('/')
-    browser.all('nav').first.all('div a span').should(have.size(13))
-    (browser.all('nav').first.all('div a span').should(have.texts(
-        'Главная', 'ТВ-каналы', 'Моё кино', 'Фильмы', 'Сериалы', 'Детям', 'Спорт', 'Блог', 'Аудиокниги', 'Подписки')))
-
+from diploma_project.pages import main_page
 # def test_page_login():
 #     browser.open('/')
 #     time.sleep(1)
@@ -22,6 +15,15 @@ def test_open_site():
 # #    browser.element('div.tn1c75m > h3').should(have.text(''))
 #
 #  browser.element('div.rbzy7g5 > div > div:nth-child(2) > button').
+
+
+
+
+def test_open_site():
+    browser.open('/')
+    browser.all('nav').first.all('div a span').should(have.size(13))
+    (browser.all('nav').first.all('div a span').should(have.texts(
+        'Главная', 'ТВ-каналы', 'Моё кино', 'Фильмы', 'Сериалы', 'Детям', 'Спорт', 'Блог', 'Аудиокниги', 'Подписки')))
 
 
 

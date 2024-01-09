@@ -1,7 +1,7 @@
 import pytest
 from selene import browser
 from selenium import webdriver
-
+from diploma_project.utils import attach
 
 @pytest.fixture(scope='function', autouse=True)
 def browser_management():
@@ -18,5 +18,10 @@ def browser_management():
     browser.config.driver_options = driver_options
 
     yield
+
+    attach.add_screenshot(browser)
+    attach.add_logs(browser)
+    attach.add_html(browser)
+    attach.add_video(browser)
 
     browser.quit()
