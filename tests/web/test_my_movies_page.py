@@ -1,13 +1,17 @@
-import time
-from selene import browser, have, by
-import os
-from selene import command
-from diploma_project.pages import main_page
+from diploma_project.pages import page_open
+import allure
 
 
 def test_my_movies_page():
-    page = main_page.MainPage
-    page.open_main_page(page)
-    page.open_page(page,'Моё кино')
-    page.should_page(page,'Моё кино')
+    # GIVEN
+    with allure.step('Открытие стартовой страницы'):
+        main_page = page_open.MainPage
+        main_page.open_main_page(main_page)
 
+    # WHEN
+    with allure.step('Переход в меню моё кино'):
+        main_page.open_page(main_page, 'Моё кино')
+
+    # THEN
+    with allure.step('Проверка страницы моё кино'):
+        main_page.should_page(main_page, 'Моё кино')

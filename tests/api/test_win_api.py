@@ -1,78 +1,76 @@
-import time
-from selene import browser, have
-import os
-from selene import command
-import os
 import requests
 import json
-import logging
 from diploma_project.utils.utils import load_schema
 import jsonschema
-
-HEADERS = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.361', }
-USER_AGENT = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.361'
-URL = "https://cnt-lbrc-itv01.svc.iptv.rt.ru/api/v2/user/session_tokens"
-PAYLOAD = {"device": {"type": "NCWEB", "platform": "browser"}, "fingerprint": "rDZGI44TquVozSNB2rgXy"}
+from diploma_project.api import open_api, menu_api
+import allure
+import logging
+from allure_commons._allure import step
+from allure_commons.types import AttachmentType
 
 
 def test_wink_my_movies():
-    result = requests.post( url=URL, headers=HEADERS, json=PAYLOAD)
-    session_id = result.json()['session_id']
+    with step("Open page and get id session with API"):
+        headers = {'session_id': open_api.open_api(), 'user-agent': open_api.USER_AGENT, }
 
-    schema = load_schema("get_moekino.json")
+    with step("Open page my movies with API"):
+        result = requests.get(url=menu_api.URL_MY_MOVIES, headers=headers)
 
-    url ='https://cnt-lbrc-itv01.svc.iptv.rt.ru/api/v3/user/media_views/alias/moekino?limit=1&offset=1'
-    headers = {'session_id': session_id, 'user-agent': USER_AGENT,}
-    result = requests.get(url, headers=headers)
-
-    assert result.status_code == 200
-    jsonschema.validate(result.json(), schema)
-    assert result.json()['name'] == 'Моё кино'
+    with step("Should page my movies with API"):
+        assert result.status_code == 200
+        jsonschema.validate(result.json(), load_schema("get_moekino.json"))
+        assert result.json()['name'] == 'Моё кино'
+        allure.attach(body=result.text, name="Response", attachment_type=AttachmentType.TEXT, extension="txt")
+        allure.attach(body=json.dumps(result.json(), indent=4, ensure_ascii=True), name="Response",
+                      attachment_type=AttachmentType.JSON, extension="json")
 
 
 def test_wink_movies():
-    result = requests.post( url=URL, headers=HEADERS, json=PAYLOAD)
-    session_id = result.json()['session_id']
+    with step("Open page and get id session with API"):
+        headers = {'session_id': open_api.open_api(), 'user-agent': open_api.USER_AGENT, }
 
-    schema = load_schema("get_kino.json")
+    with step("Open page movies with API"):
+        result = requests.get(url=menu_api.URL_MOVIES, headers=headers)
 
-    url ='https://cnt-lbrc-itv01.svc.iptv.rt.ru/api/v3/user/media_views/alias/movies?limit=1&offset=1'
-    headers = {'session_id': session_id,'user-agent': USER_AGENT,}
-    result = requests.get(url, headers=headers)
+    with step("Should page movies with API"):
+        assert result.status_code == 200
+        jsonschema.validate(result.json(), load_schema("get_kino.json"))
+        assert result.json()['name'] == 'Фильмы'
+        allure.attach(body=result.text, name="Response", attachment_type=AttachmentType.TEXT, extension="txt")
+        allure.attach(body=json.dumps(result.json(), indent=4, ensure_ascii=True), name="Response",
+                      attachment_type=AttachmentType.JSON, extension="json")
 
-    assert result.status_code == 200
-    jsonschema.validate(result.json(), schema)
-    assert result.json()['name'] == 'Фильмы'
 
 def test_wink_serials():
-    result = requests.post( url=URL, headers=HEADERS, json=PAYLOAD)
-    session_id = result.json()['session_id']
+    with step("Open page and get id session with API"):
+        headers = {'session_id': open_api.open_api(), 'user-agent': open_api.USER_AGENT, }
 
-    schema = load_schema("get_serials.json")
+    with step("Open page serials with API"):
+        result = requests.get(url=menu_api.URL_SERIALS, headers=headers)
 
-    url ='https://cnt-lbrc-itv01.svc.iptv.rt.ru/api/v3/user/media_views/alias/series?limit=1&offset=1'
-    headers = {'session_id': session_id,'user-agent': USER_AGENT,}
-    result = requests.get(url, headers=headers)
-
-    assert result.status_code == 200
-    jsonschema.validate(result.json(), schema)
-    assert result.json()['name'] == 'Сериалы'
+    with step("Should page my movies with API"):
+        assert result.status_code == 200
+        jsonschema.validate(result.json(), load_schema("get_serials.json"))
+        assert result.json()['name'] == 'Сериалы'
+        allure.attach(body=result.text, name="Response", attachment_type=AttachmentType.TEXT, extension="txt")
+        allure.attach(body=json.dumps(result.json(), indent=4, ensure_ascii=True), name="Response",
+                      attachment_type=AttachmentType.JSON, extension="json")
 
 
 def test_wink_tv_channels():
-    result = requests.post( url=URL, headers=HEADERS, json=PAYLOAD)
-    session_id = result.json()['session_id']
+    with step("Open page and get id session with API"):
+        headers = {'session_id': open_api.open_api(), 'user-agent': open_api.USER_AGENT, }
 
-    schema = load_schema("get_tv_channels.json")
+    with step("Open page tv with API"):
+        result = requests.get(url=menu_api.URL_TV, headers=headers)
 
-    url ='https://cnt-lbrc-itv01.svc.iptv.rt.ru/api/v2/user/channels?with_epg=true&epg_limit=1&limit=1&offset=1'
-    headers = {'session_id': session_id,'user-agent': USER_AGENT,}
-    result = requests.get(url, headers=headers)
-
-    assert result.status_code == 200
-    # jsonschema.validate(result.json(), schema)
-    assert result.json()['items'][0]['name'] == 'Всё ТВ'
-
+    with step("Should page tv with API"):
+        assert result.status_code == 200
+        # jsonschema.validate(result.json(), load_schema("get_tv_channels.json"))
+        assert result.json()['items'][0]['name'] == 'Всё ТВ'
+        allure.attach(body=result.text, name="Response", attachment_type=AttachmentType.TEXT, extension="txt")
+        allure.attach(body=json.dumps(result.json(), indent=4, ensure_ascii=True), name="Response",
+                      attachment_type=AttachmentType.JSON, extension="json")
 
 # logging.info(result.request.url)
 # logging.info(result.request.headers)

@@ -2,7 +2,7 @@ import time
 from selene import browser, have, by
 import os
 from selene import command
-from diploma_project.pages import main_page
+from diploma_project.pages import page_open
 # def test_page_login():
 #     browser.open('/')
 #     time.sleep(1)
