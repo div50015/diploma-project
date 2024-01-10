@@ -45,7 +45,8 @@ from diploma_project.pages import page_open
 # def test_page_serials():
 #     browser.open('/')
 #     browser.all('nav').first.all('div a span').element_by(have.text('Сериалы')).click()
-#     browser.element('div.r35fcff').should(have.text('Сериалы'))
+#     browser.element('div.r35fcff').should(have.text('Сериалы'
+#     ))
 #
 # def test_page_movies_selection_by_year():
 #     browser.open('/')

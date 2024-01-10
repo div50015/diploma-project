@@ -35,21 +35,21 @@ from dotenv import load_dotenv
 DEFAULT_BROWSER_VERSION = "100.0"
 
 
-def pytest_addoption(parser):
-    parser.addoption(
-        '--browser_version',
-        default='100.0'
-    )
+# def pytest_addoption(parser):
+#     parser.addoption(
+#         '--browser_version',
+#         default='100.0'
+#     )
 
 @pytest.fixture(scope='session')
 def load_env():
     load_dotenv()
 
 
-@pytest.fixture(scope="function")
+@pytest.fixture(scope="function", autouse=True)
 def browser_setup(request):
-    browser_version = request.config.getoption('--browser_version')
-    browser_version = browser_version if browser_version != "" else DEFAULT_BROWSER_VERSION
+    # browser_version = request.config.getoption('--browser_version')
+    # browser_version = browser_version if browser_version != "" else DEFAULT_BROWSER_VERSION
     options = Options()
     selenoid_capabilities = {
         "browserName": "chrome",
@@ -60,8 +60,8 @@ def browser_setup(request):
         }
     }
     options.capabilities.update(selenoid_capabilities)
-    login = os.getenv('LOGIN1')
-    password = os.getenv('PASSWORD1')
+    login = os.getenv('LOGIN')
+    password = os.getenv('PASSWORD')
     driver = webdriver.Remote(command_executor=f"https://{login}:{password}@selenoid.autotests.cloud/wd/hub", options=options)
 
     browser.config.driver = driver
@@ -72,9 +72,9 @@ def browser_setup(request):
 
     yield
 
-    attach.add_screenshot(browser)
-    attach.add_logs(browser)
-    attach.add_html(browser)
-    attach.add_video(browser)
+    # attach.add_screenshot(browser)
+    # attach.add_logs(browser)
+    # attach.add_html(browser)
+    # attach.add_video(browser)
 
     browser.quit()

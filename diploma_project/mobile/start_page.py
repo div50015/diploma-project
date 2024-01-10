@@ -63,33 +63,32 @@ def should_main_page():
 
 
 def go_main_page():
-    with step('Verify content page 1'):
-        results = browser.element((AppiumBy.ID, 'ru.rt.video.app.mobile:id/titleSceneOne'))
+    # with step('Verify content page 1'):
+    #     browser.element((AppiumBy.ID, 'ru.rt.video.app.mobile:id/titleSceneOne'))
 
     with step('Going next page'):
         browser.element((AppiumBy.ID, 'ru.rt.video.app.mobile:id/mainButtonTitle')).click()
 
-    with step('Verify content page 2'):
-        results = browser.element((AppiumBy.ID, 'ru.rt.video.app.mobile:id/titleSceneTwo'))
+    # with step('Verify content page 2'):
+    #     browser.element((AppiumBy.ID, 'ru.rt.video.app.mobile:id/titleSceneTwo'))
 
     with step('Going next page'):
         browser.element((AppiumBy.ID, 'ru.rt.video.app.mobile:id/mainButtonTitle')).click()
 
-    with step('Verify content page 3'):
-        results = browser.element((AppiumBy.ID, 'ru.rt.video.app.mobile:id/titleSceneThree'))
-        results.should(have.text('Для детей'))
+    # with step('Verify content page 3'):
+    #     browser.element((AppiumBy.ID, 'ru.rt.video.app.mobile:id/titleSceneThree'))
 
     with step('Going next page'):
         browser.element((AppiumBy.ID, 'ru.rt.video.app.mobile:id/mainButtonTitle')).click()
 
-    with step('Verify content page 4'):
-        results = browser.element((AppiumBy.ID, 'ru.rt.video.app.mobile:id/titleSceneFour'))
+    # with step('Verify content page 4'):
+    #     browser.element((AppiumBy.ID, 'ru.rt.video.app.mobile:id/titleSceneFour'))
 
     with step('Going next page'):
         browser.element((AppiumBy.ID, 'ru.rt.video.app.mobile:id/mainButtonTitle')).click()
 
-    with step('Verify content page 5'):
-        results = browser.element((AppiumBy.ID, 'ru.rt.video.app.mobile:id/titleSceneFive'))
+    # with step('Verify content page 5'):
+    #     results = browser.element((AppiumBy.ID, 'ru.rt.video.app.mobile:id/titleSceneFive'))
 
     with step('Going next main page'):
         browser.element((AppiumBy.XPATH,

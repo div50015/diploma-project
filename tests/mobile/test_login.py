@@ -16,4 +16,3 @@ def test_login(context):
 
     # THEN
     login_page.should_login()
-

@@ -5,7 +5,7 @@ from appium.webdriver.common.appiumby import AppiumBy
 from selene import browser, have
 
 
-def go_login(context):
+def go_login():
     with step('Going login page'):
         browser.element((AppiumBy.ID, 'ru.rt.video.app.mobile:id/avatar')).click()
 
