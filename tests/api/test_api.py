@@ -48,7 +48,7 @@ def test_wink_serials():
     with step("Open page serials with API"):
         result = requests.get(url=menu_api.URL_SERIALS, headers=headers)
 
-    with step("Should page my movies with API"):
+    with step("Should page serials with API"):
         assert result.status_code == 200
         jsonschema.validate(result.json(), load_schema("get_serials.json"))
         assert result.json()['name'] == 'Сериалы'
@@ -72,7 +72,3 @@ def test_wink_tv_channels():
         allure.attach(body=json.dumps(result.json(), indent=4, ensure_ascii=True), name="Response",
                       attachment_type=AttachmentType.JSON, extension="json")
 
-# logging.info(result.request.url)
-# logging.info(result.request.headers)
-# logging.info(result.request.body)
-# logging.info(result.request.method)

@@ -27,6 +27,10 @@ class MainPage:
         browser.element('div.r35fcff').should(have.text(f'{name_page}'))
         return self
 
+    def should_page_tv(self, name_page):
+        browser.element('a.lltcpd8.ld9ti8i > span').should(have.text(f'{name_page}'))
+        return self
+
     def to_do_filtering(self):
         browser.element('div.rbzy7g5 > div > div:nth-child(2) > button').click()
         browser.element('div.r1bo5h80.f1xfyimt > button > span > svg').click()

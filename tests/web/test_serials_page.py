@@ -4,17 +4,14 @@ import allure
 
 def test_movies_page():
     # GIVEN
-    with allure.step('Открытие стартовой страницы'):
+    with allure.step('Opening main page'):
         main_page = page_open.MainPage
         main_page.open_main_page(main_page)
 
     # WHEN
-    with allure.step('Переход в меню сериалы'):
+    with allure.step('Go to Serials page'):
         main_page.open_page(main_page, 'Сериалы')
 
     # THEN
-    with allure.step('Проверка страницы сериалы'):
+    with allure.step('Should Serials page'):
         main_page.should_page_serials(main_page, 'Сериалы')
-
-
-

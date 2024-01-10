@@ -11,10 +11,10 @@ def test_main_page():
     main_page = page_open.MainPage
 
     # WHEN
-    with allure.step('Открытие стартовой страницы'):
+    with allure.step('Opening main page'):
         main_page.open_main_page(main_page)
 
     # THEN
-    with allure.step('Проверка стартовой страницы'):
+    with allure.step('Should main page'):
         main_page.should_main_page(main_page)
 

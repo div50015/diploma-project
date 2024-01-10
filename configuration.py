@@ -6,8 +6,8 @@ from diploma_project.utils import utils
 
 class Settings(BaseModel):
     context: str
-    login: str = os.getenv('LOGIN')
-    password: str = os.getenv('PASSWORD')
+    login: str = os.getenv('User_Name')
+    password: str = os.getenv('Access_Key')
     appWaitActivity: str = os.getenv('appWaitActivity')
     remote_url: str = os.getenv('remote_url')
     udid: str = os.getenv('udid')
