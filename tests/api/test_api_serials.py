@@ -8,6 +8,10 @@ from allure_commons._allure import step
 from allure_commons.types import AttachmentType
 
 
+@allure.epic('API')
+@allure.story('serials')
+@allure.label('div50015', 'allure8')
+@allure.tag('mobile')
 def test_serials(url_open, headers, payload, user_agent, url_serials):
     with step("Get session id"):
         headers_id = {

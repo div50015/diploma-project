@@ -6,6 +6,10 @@ from selene import browser, have
 from diploma_project.mobile import start_page, movies_page
 
 
+@allure.epic('MOBILE')
+@allure.story('movies')
+@allure.label('div50015', 'allure8')
+@allure.tag('mobile')
 def test_movies(context):
     # GIVEN
     allure.dynamic.parameter('context', context)

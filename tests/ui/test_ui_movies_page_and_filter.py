@@ -2,6 +2,11 @@ from diploma_project.pages import page_open
 import allure
 
 
+@allure.epic('UI')
+@allure.feature('Фильтрация')
+@allure.story('movies filter')
+@allure.label('div50015', 'allure8')
+@allure.tag('ui')
 def test_movies_page_and_filter():
     # GIVEN
     with allure.step('Opening main page'):

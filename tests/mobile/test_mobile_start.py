@@ -5,6 +5,10 @@ from appium.webdriver.common.appiumby import AppiumBy
 from selene import browser, have
 from diploma_project.mobile import start_page
 
+@allure.epic('MOBILE')
+@allure.story('main page')
+@allure.label('div50015', 'allure8')
+@allure.tag('mobile')
 def test_start(context):
     # GIVEN
     allure.dynamic.parameter('context', context)
