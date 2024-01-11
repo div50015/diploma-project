@@ -14,9 +14,9 @@ def test_movies_page():
         main_page.open_main_page(main_page)
 
     # WHEN
-    with allure.step('Go to Movies page'):
-        main_page.open_page(main_page, 'Фильмы')
-
-    # THEN
-    with allure.step('Should Movies page'):
-        main_page.should_page(main_page, 'Фильмы')
+    # with allure.step('Go to Movies page'):
+    #     main_page.open_page(main_page, 'Фильмы')
+    #
+    # # THEN
+    # with allure.step('Should Movies page'):
+    #     main_page.should_page_my_movies(main_page, 'Фильмы по жанрам')

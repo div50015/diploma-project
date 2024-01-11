@@ -23,6 +23,10 @@ class MainPage:
         browser.element('div.r1o2hf9x > h2').should(have.text(f'{name_page}'))
         return self
 
+    def should_page_my_movies(self, name_page):
+        browser.element('div:nth-child(2) > div > div.r1o2hf9x > h3').should(have.text(f'{name_page}'))
+        return self
+
     def should_page_serials(self, name_page):
         browser.element('div.r35fcff').should(have.text(f'{name_page}'))
         return self

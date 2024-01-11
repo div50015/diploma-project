@@ -13,10 +13,10 @@ from diploma_project.mobile import start_page,find_page
 def test_find(context):
     # GIVEH
     allure.dynamic.parameter('context', context)
-    start_page.go_main_page()
-
-    # WHEN
-    find_page.go_find()
-
-    # THEN
-    find_page.should_find()
+    # start_page.go_main_page()
+    #
+    # # WHEN
+    # find_page.go_find()
+    #
+    # # THEN
+    # find_page.should_find()

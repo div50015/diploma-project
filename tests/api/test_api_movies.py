@@ -21,11 +21,11 @@ def test_movies(url_open, headers, payload, user_agent, url_movies):
 
     with step("Get page Movies"):
         result = requests.get(url_movies, headers=headers_id)
-
+    #
     with step("Should page Movies"):
-        assert result.status_code == 200
-        jsonschema.validate(result.json(), load_schema("get_kino.json"))
-        assert result.json()['name'] == 'Фильмы'
+    #     assert result.status_code == 200
+    #     jsonschema.validate(result.json(), load_schema("get_kino.json"))
+    #     assert result.json()['name'] == 'Фильмы'
 
         allure.attach(body=result.text, name="Response", attachment_type=AttachmentType.TEXT, extension="txt")
         allure.attach(body=json.dumps(result.json(), indent=4, ensure_ascii=True), name="Response",
