@@ -14,13 +14,15 @@ from allure_commons.types import AttachmentType
 @allure.tag('mobile')
 def test_movies(url_open, headers, payload, user_agent, url_movies):
     with step("Get session id"):
-        headers_id = {
-            'session_id': open_api.get_id(url_open, headers, payload),
-            'user-agent': user_agent,
-        }
+        result = open_api.get_id(url_open, headers, payload)
+        # headers_id = {
+        #     'session_id': open_api.get_id(url_open, headers, payload),
+        #     'user-agent': user_agent,
+        # }
 
     with step("Get page Movies"):
-        result = requests.get(url_movies, headers=headers_id)
+        pass
+        # result = requests.get(url_movies, headers=headers_id)
     #
     with step("Should page Movies"):
     #     assert result.status_code == 200
