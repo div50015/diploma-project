@@ -1,80 +1,46 @@
-"""
 import pytest
-from selene import browser
-from selenium import webdriver
 
 
-@pytest.fixture(scope='function', autouse=True)
-def browser_management():
-    browser.config.base_url = 'https://wink.ru'
-    browser.config.timeout = 2.0
-    browser.config.window_width = 1800
-    browser.config.window_height = 1080
-
-#    browser.config.type_by_js = True
-    # закрытие сообщения о том что браузер запущен в отладочном режиме
-    driver_options = webdriver.ChromeOptions()
-    driver_options.add_experimental_option("excludeSwitches", ['enable-automation'])
-#    driver_options.add_argument('--headless=new')
-    browser.config.driver_options = driver_options
-
-    yield
-
-    browser.quit()
-"""
-
-import pytest
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-from selene import browser
-from diploma_project.utils import attach
-import os
-from dotenv import load_dotenv
+def url_api():
+    return 'https://cnt-lbrc-itv01.svc.iptv.rt.ru'
 
 
-DEFAULT_BROWSER_VERSION = "100.0"
+@pytest.fixture
+def url_open():
+    return f'{url_api()}/api/v2/user/session_tokens'
 
 
-# def pytest_addoption(parser):
-#     parser.addoption(
-#         '--browser_version',
-#         default='100.0'
-#     )
-
-@pytest.fixture(scope='session')
-def load_env():
-    load_dotenv()
+@pytest.fixture
+def url_my_movies():
+    return f'{url_api()}/api/v3/user/media_views/alias/moekino?limit=1&offset=1'
 
 
-@pytest.fixture(scope="function", autouse=True)
-def browser_setup(request):
-    # browser_version = request.config.getoption('--browser_version')
-    # browser_version = browser_version if browser_version != "" else DEFAULT_BROWSER_VERSION
-    options = Options()
-    selenoid_capabilities = {
-        "browserName": "chrome",
-        "browserVersion": "100.0",
-        "selenoid:options": {
-            "enableVNC": True,
-            "enableVideo": True
-        }
-    }
-    options.capabilities.update(selenoid_capabilities)
-    login = os.getenv('LOGIN')
-    password = os.getenv('PASSWORD')
-    driver = webdriver.Remote(command_executor=f"https://{login}:{password}@selenoid.autotests.cloud/wd/hub", options=options)
+@pytest.fixture
+def url_movies():
+    return f'{url_api()}/api/v3/user/media_views/alias/movies?limit=1&offset=1'
 
-    browser.config.driver = driver
-    # browser.config.base_url = 'https://demoqa.com/automation-practice-form'
-    browser.config.timeout = 2.0
-    browser.config.window_width = 1500
-    browser.config.window_height = 1080
 
-    yield
+@pytest.fixture
+def url_serials():
+    return f'{url_api()}/api/v3/user/media_views/alias/series?limit=1&offset=1'
 
-    # attach.add_screenshot(browser)
-    # attach.add_logs(browser)
-    # attach.add_html(browser)
-    # attach.add_video(browser)
 
-    browser.quit()
+@pytest.fixture
+def url_tv():
+    return f'{url_api()}/api/v2/user/channels?with_epg=true&epg_limit=1&limit=1&offset=1'
+
+
+@pytest.fixture
+def headers():
+    return {
+        'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.361'}
+
+
+@pytest.fixture
+def user_agent():
+    return 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.361'
+
+
+@pytest.fixture
+def payload():
+    return {"device": {"type": "NCWEB", "platform": "browser"}, "fingerprint": "rDZGI44TquVozSNB2rgXy"}
