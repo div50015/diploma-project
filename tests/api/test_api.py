@@ -72,3 +72,37 @@ def test_wink_tv_channels():
         allure.attach(body=json.dumps(result.json(), indent=4, ensure_ascii=True), name="Response",
                       attachment_type=AttachmentType.JSON, extension="json")
 
+
+def test_test():
+    with step("Set heads"):
+        headers = {'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.361',}
+    with step("Set url"):
+        url = "https://cnt-lbrc-itv01.svc.iptv.rt.ru/api/v2/user/session_tokens"
+    with step("Set payload"):
+        payload = {"device": {"type": "NCWEB", "platform": "browser"}, "fingerprint": "rDZGI44TquVozSNB2rgXy"}
+    with step("Run post request"):
+        result = requests.post( url, headers=headers, json=payload)
+    with step("Get id_session"):
+        session_id = result.json()['session_id']
+
+    with step("Load json schema"):
+        schema = load_schema("get_moekino.json")
+
+    with step("Set url"):
+        url ='https://cnt-lbrc-itv01.svc.iptv.rt.ru/api/v3/user/media_views/alias/moekino?limit=1&offset=1'
+    with step("Set heads"):
+        headers = {'session_id': session_id,'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',}
+    with step("Run get request"):
+        result = requests.get(url, headers=headers)
+
+    with step("Assert status_code"):
+        assert result.status_code == 200
+    with step("Assert json schema"):
+        jsonschema.validate(result.json(), schema)
+    with step("Assert json_value name"):
+        assert result.json()['name'] == 'Моё кино'
+        allure.attach(body=result.text, name="Response", attachment_type=AttachmentType.TEXT, extension="txt")
+        allure.attach(body=json.dumps(result.json(), indent=4, ensure_ascii=True), name="Response",
+                      attachment_type=AttachmentType.JSON, extension="json")
+
+
