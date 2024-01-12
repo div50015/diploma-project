@@ -117,8 +117,7 @@ allure serve build/allure-results
 
 ### Оповещения в Telegram
 
-![telegram_allert](./pictures/tbot.png)
-
+<img src="./pictures/tbot.png" width="300">
 ----
 
 ### Видео прохождения автотестов
