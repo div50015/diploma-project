@@ -1,7 +1,9 @@
 from diploma_project.pages import page_open
 import allure
 
+
 @allure.epic('UI')
+@allure.issue("https://jira.autotests.cloud/browse/HOMEWORK-1047", "HOMEWORK-1047")
 @allure.feature('Страницы')
 @allure.story('serials')
 @allure.label('div50015', 'allure8')

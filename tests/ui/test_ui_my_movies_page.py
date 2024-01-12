@@ -3,6 +3,7 @@ import allure
 
 
 @allure.epic('UI')
+@allure.issue("https://jira.autotests.cloud/browse/HOMEWORK-1047", "HOMEWORK-1047")
 @allure.feature('Страницы')
 @allure.story('my_movies')
 @allure.label('div50015', 'allure8')
