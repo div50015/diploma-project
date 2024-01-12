@@ -11,8 +11,7 @@ class MainPage:
     def should_main_page(self):
         browser.all('nav').first.all('div a span').should(have.size(13))
         (browser.all('nav').first.all('div a span').should(have.texts(
-            'Главная', 'ТВ-каналы', 'Моё кино', 'Фильмы', 'Сериалы', 'Детям', 'Спорт', 'Блог', 'Аудиокниги',
-            'Подписки')))
+            'Главная', 'ТВ-каналы', 'Моё кино', 'Фильмы', 'Сериалы', 'Детям', 'Спорт', 'Блог', 'Аудиокниги', 'Подписки', 'Видеоблоги')))
         return self
 
     def open_page(self, name_page):

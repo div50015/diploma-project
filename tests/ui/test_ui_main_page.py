@@ -19,11 +19,11 @@ def test_main_page():
         main_page.open_main_page(main_page)
 
 
-    # # WHEN
-    # with allure.step('Opening main page'):
-    #     main_page.open_main_page(main_page)
-    #
-    # # THEN
-    # with allure.step('Should main page'):
-    #     main_page.should_main_page(main_page)
+    # WHEN
+    with allure.step('Opening main page'):
+        main_page.open_main_page(main_page)
+
+    # THEN
+    with allure.step('Should main page'):
+        main_page.should_main_page(main_page)
 

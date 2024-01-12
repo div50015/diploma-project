@@ -1,5 +1,3 @@
-import diploma_project.utils.data
-import allure
 from allure_commons._allure import step
 from appium.webdriver.common.appiumby import AppiumBy
 from selene import browser, have
@@ -15,5 +13,3 @@ def should_movies():
     with step('Verify content movies page '):
         results = browser.element((AppiumBy.ID, 'ru.rt.video.app.mobile:id/title'))
         results.should(have.text('Фильмы'))
-
-

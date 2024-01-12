@@ -15,22 +15,19 @@ from allure_commons.types import AttachmentType
 @allure.tag('mobile')
 def test_movies(url_open, headers, payload, user_agent, url_movies):
     with step("Get session id"):
-        pass
-        # headers_id = {
-        #     'session_id': open_api.get_id(url_open, headers, payload),
-        #     'user-agent': user_agent,
-        # }
+        headers_id = {
+            'session_id': open_api.get_id(url_open, headers, payload),
+            'user-agent': user_agent,
+        }
 
     with step("Get page Movies"):
-        pass
-        # result = requests.get(url_movies, headers=headers_id)
+        result = requests.get(url_movies, headers=headers_id)
 
     with step("Should page Movies"):
-        pass
-        # assert result.status_code == 200
-        # jsonschema.validate(result.json(), load_schema("get_kino.json"))
-        # assert result.json()['name'] == 'Фильмы'
-        #
-        # allure.attach(body=result.text, name="Response", attachment_type=AttachmentType.TEXT, extension="txt")
-        # allure.attach(body=json.dumps(result.json(), indent=4, ensure_ascii=True), name="Response",
-        #               attachment_type=AttachmentType.JSON, extension="json")
+        assert result.status_code == 200
+        jsonschema.validate(result.json(), load_schema("get_kino.json"))
+        assert result.json()['name'] == 'Фильмы'
+
+        allure.attach(body=result.text, name="Response", attachment_type=AttachmentType.TEXT, extension="txt")
+        allure.attach(body=json.dumps(result.json(), indent=4, ensure_ascii=True), name="Response",
+                      attachment_type=AttachmentType.JSON, extension="json")

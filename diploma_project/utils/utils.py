@@ -10,7 +10,6 @@ def load_schema(file_name):
         return schema
 
 
-
 def abs_path_from_project(relative_path: str):
     import data
     from pathlib import Path
