@@ -83,33 +83,33 @@ allure serve build/allure-results
 ### Allure отчет
 #### Общие результаты
 
-![allure_report_overview](./pictures/allure_all.jpg)
+![allure_report_overview](./pictures/allure-all-report.png)
 
 #### Список тест кейсов
 
-![allure_reports_behaviors](./pictures/allure_behaviors.jpg)
+![allure_reports_behaviors](./pictures/allure-list-test.png)
 
 #### Отчет прохождения теста
 
-![allure_reports_graphs](./pictures/test_report.jpg)
+![allure_reports_graphs](./pictures/allure-test.png)
 
 
 ----
 
 ### Интеграция с Allure TestOps
-> <a target="_blank" href="https://allure.autotests.cloud/project/3787/dashboards">Ссылка на проект</a>
+> <a target="_blank" href="https://allure.autotests.cloud/project/3941/launches">Ссылка на проект</a>
 
 #### Дашборд с общими показателями тестовых прогонов
 
-![allure_test_ops_dashboards](./pictures/allure_dashboards.jpg)
+![allure_test_ops_dashboards](./pictures/testops-dashboard.png)
 
 #### История запуска тестовых наборов
 
-![allure_testops_launches](./pictures/allure_launches.jpg)
+![allure_testops_launches](./pictures/testops-launches.png)
 
 #### Тест кейсы
 
-![allure_testops_suites](./pictures/allure_suites.jpg)
+![allure_testops_suites](./pictures/testops-all-test.png)
 
 ----
 
@@ -117,13 +117,14 @@ allure serve build/allure-results
 
 ### Оповещения в Telegram
 
-![telegram_allert](./pictures/telegram.png)
+![telegram_allert](./pictures/tbot.png)
 
 ----
 
-### Видео прохождения автотеста
+### Видео прохождения автотестов
 
-![autotest_gif](./pictures/video.gif)
+![autotest_gif](./pictures/ui1.gif)
+![autotest_gif](./pictures/mobile1.gif)
 
 ----
 
