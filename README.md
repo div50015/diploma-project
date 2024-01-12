@@ -124,7 +124,6 @@ allure serve build/allure-results
 ### Видео прохождения автотестов
 
 ![autotest_gif](./pictures/ui1.gif)
-![autotest_gif](./pictures/mobile1.gif)
-
+<img src="./pictures/mobile1.gif" width="200">
 ----
 
