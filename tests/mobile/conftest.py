@@ -3,13 +3,12 @@ import pytest
 import allure_commons
 from diploma_project.utils import allure_attach
 from dotenv import load_dotenv
-from appium.options.android import UiAutomator2Options
 from selene import browser, support
 from appium import webdriver
 
 
 def pytest_addoption(parser):
-    parser.addoption("--context", action="store", default="local_real", help="Specify context")
+    parser.addoption("--context", action="store", default="bstack", help="Specify context")
 
 
 def pytest_configure(config):
@@ -26,7 +25,7 @@ def context(request):
 def android_mobile_management(context):
     from configuration import settings
 
-    options = UiAutomator2Options().load_capabilities(settings.to_driver_options(context=context))
+    options = settings.to_driver_options(context=context)
 
     with allure.step('init app session'):
         browser.config.driver = webdriver.Remote(

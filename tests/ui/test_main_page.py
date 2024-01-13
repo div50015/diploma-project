@@ -9,10 +9,6 @@ import allure
 @allure.label('div50015', 'allure8')
 @allure.tag('ui')
 def test_main_page_name():
-    # GIVEN
-    with allure.step('Opening main page'):
-        main_page.open_main_page()
-
     # WHEN
     with allure.step('Opening main page'):
         main_page.open_main_page()

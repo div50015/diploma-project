@@ -1,7 +1,8 @@
 import os
+
+from appium.options.android import UiAutomator2Options
 from pydantic import BaseModel
 from diploma_project.utils import helpers
-from appium.options.android import UiAutomator2Options
 
 
 class Settings(BaseModel):
@@ -22,32 +23,28 @@ class Settings(BaseModel):
         options = UiAutomator2Options()
 
         if context == 'local_emulator':
-            options: str = {
-                'app': helpers.abs_path_from_project(self.app),
-                'remote_url': self.remote_url,
-                'udid': self.udid,
-            }
+            options.set_capability('remote_url', self.remote_url)
+            options.set_capability('app', helpers.abs_path_from_project(self.app))
+            options.set_capability('udid', self.udid)
 
         if context == 'local_real':
-            options: str = {
-                'app': helpers.abs_path_from_project(self.app),
-                'remote_url': self.remote_url,
-                'udid': self.udid
-            }
-
+            options.set_capability('remote_url', self.remote_url)
+            options.set_capability('app', helpers.abs_path_from_project(self.app))
+            options.set_capability('udid', self.udid)
+        #
         if context == 'bstack':
-            options: str = {
-                'platformVersion': self.platformVersion,
-                'deviceName': self.deviceName,
-                'app': self.app,
-                'bstack:options': {
-                    'projectName': self.projectName,
-                    'buildName': self.buildName,
-                    'sessionName': self.sessionName,
-                    'userName': self.login,
-                    'accessKey': self.password,
-                }
-            }
+            options.set_capability('platformVersion', self.platformVersion)
+            options.set_capability('deviceName', self.deviceName)
+            options.set_capability('projectName', self.projectName)
+            options.set_capability('app', self.app)
+            options.set_capability(
+                'bstack:options', {
+                        'buildName': self.buildName,
+                        'sessionName': self.sessionName,
+                        'userName': self.login,
+                        'accessKey': self.password,
+                },
+            )
 
         return options
 

@@ -1,7 +1,7 @@
 #  Дипломный проект по автоматизации тестирования сайта и мобильного приложения WINK 
 > <a target="_blank" href="https://www.wink.ru">ссылка на сайт WINK</a>
 
-![main page screenshot](./pictures/wink_web.png)
+![main page screenshot](pictures/screenshots/wink_web.png)
 
 ----
 
@@ -35,7 +35,7 @@
 
 ### Используемый стэк
 
-<img title="Python" src="./pictures/python-original.svg" height="40" width="40"/> <img title="Pytest" src="./pictures/pytest-original.svg" height="40" width="40"/> <img title="Pycharm" src="./pictures/pycharm.png" height="40" width="40"/> <img title="Selenium" src="./pictures/selenium-original.svg" height="40" width="40"/> <img title="Selene" src="./pictures/selene.png" height="40" width="40"/> <img title="GitHub" src="./pictures/github-original.svg" height="40" width="40"/> <img title="Allure Report" src="./pictures/Allure_Report.png" height="40" width="40"/> <img title="Allure TestOps" src="./pictures/AllureTestOps.png" height="40" width="40"/><img title="Telegram" src="./pictures/tg.png" height="40" width="40"/><img title="Jira" src="./pictures/jira-original.svg" height="40" width="40"/> 
+<img title="Python" src="./pictures/icons/python-original.svg" height="40" width="40"/> <img title="Pytest" src="./pictures/icons/pytest-original.svg" height="40" width="40"/> <img title="Pycharm" src="./pictures/icons/pycharm.png" height="40" width="40"/> <img title="Selenium" src="./pictures/icons/selenium-original.svg" height="40" width="40"/> <img title="Selene" src="./pictures/icons/selene.png" height="40" width="40"/> <img title="GitHub" src="./pictures/icons/github-original.svg" height="40" width="40"/> <img title="Allure Report" src="./pictures/icons/Allure_Report.png" height="40" width="40"/> <img title="Allure TestOps" src="./pictures/icons/AllureTestOps.png" height="40" width="40"/><img title="Telegram" src="./pictures/icons/tg.png" height="40" width="40"/><img title="Jira" src="./pictures/icons/jira-original.svg" height="40" width="40"/> 
 
 ----
 
@@ -83,15 +83,15 @@ allure serve build/allure-results
 ### Allure отчет
 #### Общие результаты
 
-![allure_report_overview](./pictures/allure-all-report.png)
+![allure_report_overview](pictures/screenshots/allure-all-report.png)
 
 #### Список тест кейсов
 
-![allure_reports_behaviors](./pictures/allure-list-test.png)
+![allure_reports_behaviors](pictures/screenshots/allure-list-test.png)
 
 #### Отчет прохождения теста
 
-![allure_reports_graphs](./pictures/allure-test.png)
+![allure_reports_graphs](pictures/screenshots/allure-test.png)
 
 
 ----
@@ -101,15 +101,15 @@ allure serve build/allure-results
 
 #### Дашборд с общими показателями тестовых прогонов
 
-![allure_test_ops_dashboards](./pictures/testops-dashboard.png)
+![allure_test_ops_dashboards](pictures/screenshots/testops-dashboard.png)
 
 #### История запуска тестовых наборов
 
-![allure_testops_launches](./pictures/testops-launches.png)
+![allure_testops_launches](pictures/screenshots/testops-launches.png)
 
 #### Тест кейсы
 
-![allure_testops_suites](./pictures/testops-all-test.png)
+![allure_testops_suites](pictures/screenshots/testops-all-test.png)
 
 ----
 
@@ -117,18 +117,18 @@ allure serve build/allure-results
 
 ### Оповещения в Telegram
 
-<img src="./pictures/tbot.png" width="300">
+<img src="./pictures/screenshots/tbot.png" width="300">
 ----
 
 ### Видео прохождения автотестов
 
-![autotest_gif](./pictures/ui1.gif)
-<img src="./pictures/mobile1.gif" width="200">
+![autotest_gif](pictures/video/ui1.gif)
+<img src="./pictures/video/mobile1.gif" width="200">
 
 ----
 #### Интеграция с JIRA
 
-![allure_testops_suites](./pictures/jira-int.png)
+![allure_testops_suites](pictures/screenshots/jira-int.png)
 
 ----
 
