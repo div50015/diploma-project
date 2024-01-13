@@ -1,4 +1,4 @@
-from diploma_project.pages import page_open
+from diploma_project.pages.page_open import main_page
 import allure
 
 
@@ -8,16 +8,15 @@ import allure
 @allure.story('serials')
 @allure.label('div50015', 'allure8')
 @allure.tag('ui')
-def test_movies_page():
+def test_movies_page_name():
     # GIVEN
     with allure.step('Opening main page'):
-        main_page = page_open.MainPage
-        main_page.open_main_page(main_page)
+        main_page.open_main_page()
 
     # WHEN
     with allure.step('Go to Serials page'):
-        main_page.open_page(main_page, 'Сериалы')
+        main_page.open_page('Сериалы')
 
     # THEN
     with allure.step('Should Serials page'):
-        main_page.should_page_serials(main_page, 'Сериалы')
+        main_page.should_page_serials('Сериалы')

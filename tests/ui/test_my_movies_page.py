@@ -1,4 +1,4 @@
-from diploma_project.pages import page_open
+from diploma_project.pages.page_open import main_page
 import allure
 
 
@@ -8,16 +8,15 @@ import allure
 @allure.story('my_movies')
 @allure.label('div50015', 'allure8')
 @allure.tag('ui')
-def test_my_movies_page():
+def test_my_movies_page_name():
     # GIVEN
     with allure.step('Opening main page'):
-        main_page = page_open.MainPage
-        main_page.open_main_page(main_page)
+        main_page.open_main_page()
 
     # WHEN
     with allure.step('Go to My Movies page'):
-        main_page.open_page(main_page, 'Моё кино')
+        main_page.open_page('Моё кино')
 
     # THEN
     with allure.step('Should My Movies page'):
-        main_page.should_page_my_movies(main_page, 'Моё кино')
+        main_page.should_page_my_movies('Моё кино')

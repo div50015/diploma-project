@@ -1,0 +1,99 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "type": "object",
+    "properties": {
+        "id": {
+            "type": "integer"
+        },
+        "name": {
+            "type": "string"
+        },
+        "alias": {
+            "type": "string"
+        },
+        "background_url": {
+            "type": "string"
+        },
+        "media_blocks": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "id": {
+                        "type": "string"
+                    },
+                    "name": {
+                        "type": "string"
+                    },
+                    "type": {
+                        "type": "string"
+                    },
+                    "items": {
+                        "type": "array"
+                    },
+                    "display_type": {
+                        "type": "string"
+                    },
+                    "is_clickable": {
+                        "type": "boolean"
+                    },
+                    "custom_data": {
+                        "type": "object",
+                        "properties": {
+                            "display_type": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            }
+                        },
+                        "additionalProperties": false,
+                        "required": [
+                            "display_type",
+                            "title"
+                        ]
+                    }
+                },
+                "additionalProperties": false,
+                "required": [
+                    "id",
+                    "name",
+                    "type",
+                    "items",
+                    "display_type",
+                    "is_clickable",
+                    "custom_data"
+                ]
+            }
+        },
+        "has_next": {
+            "type": "boolean"
+        },
+        "meta_property": {
+            "type": "object",
+            "properties": {
+                "title": {
+                    "type": "string"
+                },
+                "description": {
+                    "type": "string"
+                }
+            },
+            "additionalProperties": false,
+            "required": [
+                "title",
+                "description"
+            ]
+        }
+    },
+    "additionalProperties": false,
+    "required": [
+        "id",
+        "name",
+        "alias",
+        "background_url",
+        "media_blocks",
+        "has_next",
+        "meta_property"
+    ]
+}

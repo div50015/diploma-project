@@ -1,7 +1,7 @@
 import os
 from pydantic import BaseModel
-import diploma_project
-from diploma_project.utils import utils
+from diploma_project.utils import helpers
+from appium.options.android import UiAutomator2Options
 
 
 class Settings(BaseModel):
@@ -19,18 +19,19 @@ class Settings(BaseModel):
     sessionName: str = os.getenv('sessionName')
 
     def to_driver_options(self, context):
+        options = UiAutomator2Options()
 
         if context == 'local_emulator':
             options: str = {
-                'app': diploma_project.utils.utils.abs_path_from_project(self.app),
-                'appWaitActivity': self.appWaitActivity,
+                'app': helpers.abs_path_from_project(self.app),
+                'remote_url': self.remote_url,
                 'udid': self.udid,
             }
 
         if context == 'local_real':
             options: str = {
-                'app': diploma_project.utils.utils.abs_path_from_project(self.app),
-                'appWaitActivity': self.appWaitActivity,
+                'app': helpers.abs_path_from_project(self.app),
+                'remote_url': self.remote_url,
                 'udid': self.udid
             }
 
@@ -51,4 +52,4 @@ class Settings(BaseModel):
         return options
 
 
-settings = Settings(context="bstack")
+settings = Settings(context='local_real')

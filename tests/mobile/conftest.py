@@ -9,7 +9,7 @@ from appium import webdriver
 
 
 def pytest_addoption(parser):
-    parser.addoption("--context", action="store", default="bstack", help="Specify context")
+    parser.addoption("--context", action="store", default="local_real", help="Specify context")
 
 
 def pytest_configure(config):
@@ -34,7 +34,7 @@ def android_mobile_management(context):
             options=options
         )
 
-    browser.config.timeout = 2.0
+    browser.config.timeout = 7.0
 
     browser.config._wait_decorator = support._logging.wait_with(
         context=allure_commons._allure.StepContext)

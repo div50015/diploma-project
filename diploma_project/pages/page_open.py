@@ -1,5 +1,4 @@
 from selene import browser, be, have, query
-import time
 
 
 class MainPage:
@@ -11,7 +10,8 @@ class MainPage:
     def should_main_page(self):
         browser.all('nav').first.all('div a span').should(have.size(13))
         (browser.all('nav').first.all('div a span').should(have.texts(
-            'Главная', 'ТВ-каналы', 'Моё кино', 'Фильмы', 'Сериалы', 'Детям', 'Спорт', 'Блог', 'Аудиокниги', 'Подписки', 'Видеоблоги')))
+            'Главная', 'ТВ-каналы', 'Моё кино', 'Фильмы', 'Сериалы', 'Детям', 'Спорт', 'Блог', 'Аудиокниги', 'Подписки',
+            'Видеоблоги')))
         return self
 
     def open_page(self, name_page):
@@ -54,15 +54,17 @@ class MainPage:
         browser.element('div.w1f2pf8l > button').click()
         browser.element('span > button:nth-child(2) > span > svg').click()
         browser.element('label:nth-child(2) > span').click()
-        time.sleep(5)
         return self
 
     def should_page_movies_and_filter_and_sort(self):
         lst = []
+        browser.all('div.r1se895.ccukme8.rz6f1rl > span').should(have.size(48))
         reitings = browser.all('div.r1se895.ccukme8.rz6f1rl > span')
         for reiting in reitings:
             lst.append(reiting.locate().text)
-            # print(f'span = {lst}')
 
         assert all(lst[i] >= lst[i + 1] for i in range(len(lst) - 1))
         return self
+
+
+main_page = MainPage()

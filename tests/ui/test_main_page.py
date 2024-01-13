@@ -1,8 +1,4 @@
-import time
-from selene import browser, have, by
-import os
-from selene import command
-from diploma_project.pages import page_open
+from diploma_project.pages.page_open import main_page
 import allure
 
 
@@ -12,18 +8,15 @@ import allure
 @allure.story('main')
 @allure.label('div50015', 'allure8')
 @allure.tag('ui')
-def test_main_page():
+def test_main_page_name():
     # GIVEN
     with allure.step('Opening main page'):
-        main_page = page_open.MainPage
-        main_page.open_main_page(main_page)
-
+        main_page.open_main_page()
 
     # WHEN
     with allure.step('Opening main page'):
-        main_page.open_main_page(main_page)
+        main_page.open_main_page()
 
     # THEN
     with allure.step('Should main page'):
-        main_page.should_main_page(main_page)
-
+        main_page.should_main_page()
