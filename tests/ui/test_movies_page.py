@@ -15,7 +15,7 @@ def test_movies_page_name():
 
     # WHEN
     with allure.step('Go to Movies page'):
-        main_page.open_page('Фильмы')
+        main_page.open_movies_page()
 
     # THEN
     with allure.step('Should Movies page'):
@@ -35,7 +35,7 @@ def test_movies_page_filter():
 
     # WHEN
     with allure.step('Go to Movies page'):
-        main_page.open_page('Фильмы')
+        main_page.open_movies_page()
 
     with allure.step('Filtering 2023 year'):
         main_page.to_do_filtering()
@@ -58,7 +58,7 @@ def test_movies_page_sort():
 
     # WHEN
     with allure.step('Go to Movies page'):
-        main_page.open_page('Фильмы')
+        main_page.open_movies_page()
 
     with allure.step('Filtering 2023 year and sort rating'):
         main_page.to_do_filtring_and_sorting()

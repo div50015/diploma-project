@@ -15,7 +15,7 @@ def test_tv_page_name():
 
     # WHEN
     with allure.step('Go to TV page'):
-        main_page.open_page('ТВ-каналы')
+        main_page.open_tv_page()
 
     # THEN
     with allure.step('Go to TV page'):

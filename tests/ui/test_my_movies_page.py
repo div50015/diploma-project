@@ -15,7 +15,7 @@ def test_my_movies_page_name():
 
     # WHEN
     with allure.step('Go to My Movies page'):
-        main_page.open_page('Моё кино')
+        main_page.open_my_movies_page()
 
     # THEN
     with allure.step('Should My Movies page'):

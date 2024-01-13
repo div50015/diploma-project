@@ -4,7 +4,6 @@ import os
 from diploma_project import utils
 from pathlib import Path
 
-
 SCHEMA_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../json_schemas')
 
 
@@ -15,7 +14,7 @@ def load_schema(file_name):
 
 
 def abs_path_from_project(relative_path: str):
-        return (
+    return (
         Path(utils.__file__).parent.parent.parent.joinpath(relative_path).absolute().__str__()
     )
 

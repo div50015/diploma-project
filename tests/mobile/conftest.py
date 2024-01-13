@@ -7,10 +7,6 @@ from selene import browser, support
 from appium import webdriver
 
 
-def pytest_addoption(parser):
-    parser.addoption("--context", action="store", default="bstack", help="Specify context")
-
-
 def pytest_configure(config):
     context = config.getoption("--context")
     load_dotenv(dotenv_path=f'.env.{context}')

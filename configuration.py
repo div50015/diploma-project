@@ -1,5 +1,4 @@
 import os
-
 from appium.options.android import UiAutomator2Options
 from pydantic import BaseModel
 from diploma_project.utils import helpers
@@ -39,10 +38,10 @@ class Settings(BaseModel):
             options.set_capability('app', self.app)
             options.set_capability(
                 'bstack:options', {
-                        'buildName': self.buildName,
-                        'sessionName': self.sessionName,
-                        'userName': self.login,
-                        'accessKey': self.password,
+                    'buildName': self.buildName,
+                    'sessionName': self.sessionName,
+                    'userName': self.login,
+                    'accessKey': self.password,
                 },
             )
 

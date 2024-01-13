@@ -15,7 +15,7 @@ def test_movies_page_name():
 
     # WHEN
     with allure.step('Go to Serials page'):
-        main_page.open_page('Сериалы')
+        main_page.open_serials_page()
 
     # THEN
     with allure.step('Should Serials page'):

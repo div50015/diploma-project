@@ -14,8 +14,20 @@ class MainPage:
             'Видеоблоги')))
         return self
 
-    def open_page(self, name_page):
-        browser.all('nav').first.all('div a span').element_by(have.text(f'{name_page}')).click()
+    def open_tv_page(self):
+        browser.all('.r1lbxtse.t1tsgdg8.rjqy0lg')[1].click()
+        return self
+
+    def open_my_movies_page(self):
+        browser.all('.r1lbxtse.t1tsgdg8.rjqy0lg')[2].click()
+        return self
+
+    def open_movies_page(self):
+        browser.all('.r1lbxtse.t1tsgdg8.rjqy0lg')[3].click()
+        return self
+
+    def open_serials_page(self):
+        browser.all('.r1lbxtse.t1tsgdg8.rjqy0lg')[4].click()
         return self
 
     def should_page_serials(self, name_page):
