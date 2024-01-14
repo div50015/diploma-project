@@ -10,8 +10,10 @@ class MainPage:
     def should_main_page(self):
         browser.all('nav').first.all('div a span').should(have.size(13))
         (browser.all('nav').first.all('div a span').should(have.texts(
-            'Главная', 'ТВ-каналы', 'Моё кино', 'Фильмы', 'Сериалы', 'Детям', 'Спорт', 'Блог', 'Аудиокниги', 'Подписки',
-            'Видеоблоги')))
+            'Главная', 'ТВ-каналы', 'Моё кино',
+            'Фильмы', 'Сериалы', 'Детям', 'Спорт', 'Блог',
+            'Аудиокниги', 'Подписки', 'Видеоблоги'))
+        )
         return self
 
     def open_tv_page(self):
@@ -31,15 +33,18 @@ class MainPage:
         return self
 
     def should_page_serials(self, name_page):
-        browser.element('.r1lbxtse.tia8zbe.r1et8e7w').should(have.text(f'{name_page}'))
+        browser.element(
+            '.r1lbxtse.tia8zbe.r1et8e7w').should(have.text(f'{name_page}'))
         return self
 
     def should_page_my_movies(self, name_page):
-        browser.all('.r1lbxtse.rgh77k2').first.should(have.text(f'{name_page}'))
+        browser.all(
+            '.r1lbxtse.rgh77k2').first.should(have.text(f'{name_page}'))
         return self
 
     def should_page_tv(self, name_page):
-        browser.element('[data-test="channels-title"]').should(have.text(f'{name_page}'))
+        browser.element(
+            '[data-test="channels-title"]').should(have.text(f'{name_page}'))
         return self
 
     def to_do_filtering(self):
@@ -51,7 +56,8 @@ class MainPage:
         return self
 
     def should_movies_and_filter(self, name_filter):
-        browser.element('div.t141zerc > h1').should(have.text(f'{name_filter}'))
+        browser.element(
+            'div.t141zerc > h1').should(have.text(f'{name_filter}'))
         return self
 
     def to_do_filtring_and_sorting(self):

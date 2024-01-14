@@ -13,7 +13,7 @@ from allure_commons.types import AttachmentType
 @allure.story('sport')
 @allure.label('div50015', 'allure8')
 @allure.tag('api')
-def test_my_movies(url_open, headers, payload, user_agent, url_for_children):
+def test_my_movies_page_name(url_open, headers, payload, user_agent, url_for_children):
     with step("Get session id"):
         headers_id = {
             'session_id': get_id(url_open, headers, payload),

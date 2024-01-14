@@ -1,5 +1,5 @@
 import allure
-from diploma_project.mobile import start_page,find_page
+from diploma_project.pages import find_page, start_page
 
 
 @allure.epic('MOBILE')
